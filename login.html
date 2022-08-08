@@ -79,7 +79,7 @@
         }
         axios.post("/user/login", this.form).then(({data}) => {
           if (data) {
-            // 保存用户信息到session
+            // 保存用户信息到sessionStorage -> sessionStorage这个东西还不太明白
             sessionStorage.setItem("token", data);
           }
           // 跳转到首页
