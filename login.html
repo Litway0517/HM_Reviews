@@ -82,7 +82,7 @@
             // 保存用户信息到sessionStorage -> sessionStorage这个东西还不太明白
             sessionStorage.setItem("token", data);
           }
-          // 跳转到首页
+          // 跳转到个人信息界面
           location.href = "/info.html";
         }).catch(err => this.$message.error(err));
       },
