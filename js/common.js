@@ -1,8 +1,13 @@
 // let commonURL = "http://192.168.50.115:8081";
+
 let commonURL = "/api";
+
 // 设置后台服务地址
 axios.defaults.baseURL = commonURL;
 axios.defaults.timeout = 2000;
+
+
+// 对所有发送的请求进行拦截 将请求添加一个 authorization 字段再放行
 // request拦截器，将用户token放入头中
 let token = sessionStorage.getItem("token");
 axios.interceptors.request.use(
@@ -15,6 +20,9 @@ axios.interceptors.request.use(
     return Promise.reject(error)
   }
 )
+
+
+// 对所有的响应进行拦截 判断本次请求是否成功 使用interceptor拦截
 axios.interceptors.response.use(function (response) {
   // 判断执行结果
   if (!response.data.success) {
@@ -33,6 +41,9 @@ axios.interceptors.response.use(function (response) {
   }
   return Promise.reject("服务器异常");
 });
+
+
+
 axios.defaults.paramsSerializer = function(params) {
   let p = "";
   Object.keys(params).forEach(k => {
@@ -42,6 +53,9 @@ axios.defaults.paramsSerializer = function(params) {
   })
   return p;
 }
+
+
+
 const util = {
   commonURL,
   getUrlParam(name) {
