@@ -79,7 +79,7 @@
         }
         axios.post("/user/login", this.form).then(({data}) => {
           if (data) {
-            // 保存用户信息到sessionStorage -> sessionStorage这个东西还不太明白
+            // 保存用户信息到sessionStorage -> sessionStorage这个东西还不太明白(暂时理解成就是一个会话存储空间, 存在于浏览器中)
             sessionStorage.setItem("token", data);
           }
           // 跳转到个人信息界面
