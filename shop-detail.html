@@ -154,14 +154,18 @@
       vouchers: []
     },
     created() {
-      // 获取参数
-      let shopId = util.getUrlParam("id");
-      // 查询酒店信息
-      this.queryShopById(shopId);
-      // 查询优惠券信息
-      this.queryVoucher(shopId);
+      this.getShopInfo();
     },
     methods: {
+      getShopInfo() {
+        // 获取参数
+        let shopId = util.getUrlParam("id");
+        // 查询店铺信息
+        this.queryShopById(shopId);
+        // 查询优惠券信息
+        this.queryVoucher(shopId);
+      },
+
       goBack() {
         history.back();
       },
@@ -224,7 +228,8 @@
         axios.post("/voucher-order/seckill/" + id)
         .then(({data}) => {
           // 抢购成功，这里输出订单id，支付功能TODO
-          this.$message.success("抢购成功，订单id：" + data)
+          this.$message.success("抢购成功，订单id：" + data);
+          this.getShopInfo();
         })
         .catch(this.$message.error)
       }
