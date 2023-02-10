@@ -187,10 +187,12 @@
       formatTime(v){
         let b = new Date(v.beginTime);
         let e = new Date(v.endTime);
-        return b.getMonth() + 1 + "月" + b.getDate() + "日 "
-          +  b.getHours() + ":" + this.formatMinutes(b.getMinutes())
-          + " ~ "/*  + e.getMonth() + 1 + "月" + e.getDate() + "日 " */
-          +  e.getHours() + ":" + this.formatMinutes(e.getMinutes());
+        let str1 = b.getMonth() + 1 + "月" + b.getDate() + "日 "
+                +  b.getHours() + ":" + this.formatMinutes(b.getMinutes())
+                + " ~ ";
+        let str2 = e.getMonth() + 1 + "月" + e.getDate() + "日 "
+                +  e.getHours() + ":" + this.formatMinutes(e.getMinutes());
+        return str1 + str2;
       },
       formatMinutes(m){
         if(m < 10) m = "0" + m
