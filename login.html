@@ -67,6 +67,10 @@
       form:{
       }
     },
+    mounted() {
+      this.radio = "1";
+      this.form.phone = "15111111111";
+    },
     methods: {
       login(){
         if(!this.radio){
